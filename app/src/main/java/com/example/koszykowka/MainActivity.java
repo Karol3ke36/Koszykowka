@@ -12,15 +12,21 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.koszykowka.databinding.ActivityMainBinding;
+
 public class MainActivity extends AppCompatActivity {
     private TextView textViewPunkty;
     private Button button, button2, button3;
     private int punkty = 0;
 
+    ActivityMainBinding binding; //nazwa klasy od nazwy pliku activity_main.xml
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
         setContentView(R.layout.activity_main);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
