@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -30,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
         button2 = findViewById(R.id.button2);
         button3 = findViewById(R.id.button3);
         textViewPunkty = findViewById(R.id.textViewPunkty);
+        if(savedInstanceState != null){
+            punkty = savedInstanceState.getInt("PUNKTY");
+            textViewPunkty.setText(Integer.toString(punkty));
+        }
         button.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -57,5 +62,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("PUNKTY", punkty);
     }
 }
